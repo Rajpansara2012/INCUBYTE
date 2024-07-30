@@ -18,6 +18,9 @@ describe('String Calculator', () => {
         expect(add('1\n2,3')).to.equal(6);
     });
     it('should return sum of number for an multi digit string with new line and delimiter', () => {
-        expect(add('//;\n1;2,3')).to.equal(6);
+        expect(add('//;;\n1;;2;;3')).to.equal(6);
+    });
+    it('should not contain nagetive number in string', () => {
+        expect(add('-1,2')).to.equal('negative numbers not allowed <-1>');
     });
 });
