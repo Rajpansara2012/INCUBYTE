@@ -14,7 +14,7 @@ function add(numbers) {
     
     //function to calculate sum
     for(let i = 0; i < n; i++) {
-        if(numbers[i] == ',') {
+        if(numbers[i] == ',' || numbers[i] == '\n') {
             sum += Number(num)
             num = ""
         }

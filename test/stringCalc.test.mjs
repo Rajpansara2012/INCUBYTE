@@ -17,4 +17,7 @@ describe('String Calculator', () => {
     it('should return sum of number for an multi digit string with new line', () => {
         expect(add('1\n2,3')).to.equal(6);
     });
+    it('should return sum of number for an multi digit string with new line and delimiter', () => {
+        expect(add('//;\n1;2,3')).to.equal(6);
+    });
 });
