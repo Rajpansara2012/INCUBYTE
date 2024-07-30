@@ -7,6 +7,23 @@ function add(numbers) {
     if(numbers.length == 1) {
         return Number(numbers)
     }
+
+    let num=""
+    let sum = 0
+    let n = numbers.length
+    
+    //function to calculate sum
+    for(let i = 0; i < n; i++) {
+        if(numbers[i] == ',') {
+            sum += Number(num)
+            num = ""
+        }
+        else {
+            num += numbers[i]
+        }
+    }
+    sum += Number(num)
+    return sum
 }
 
 module.exports = { add };

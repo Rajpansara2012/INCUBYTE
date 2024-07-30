@@ -11,4 +11,10 @@ describe('String Calculator', () => {
     it('should return sum of number for an two digit string', () => {
         expect(add('10,20')).to.equal(30);
     });
+    it('should return sum of number for an multi digit string', () => {
+        expect(add('10,20,30')).to.equal(60);
+    });
+    it('should return sum of number for an multi digit string with new line', () => {
+        expect(add('1\n2,3')).to.equal(6);
+    });
 });
