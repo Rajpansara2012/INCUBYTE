@@ -8,4 +8,7 @@ describe('String Calculator', () => {
     it('should return number for an single digit string', () => {
         expect(add('1')).to.equal(1);
     });
+    it('should return sum of number for an two digit string', () => {
+        expect(add('10,20')).to.equal(30);
+    });
 });
