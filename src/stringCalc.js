@@ -43,9 +43,14 @@ function add(numbers) {
         }
     }
 
-    //if last number is negative
-    if(Number(num) < 0) {
-        negatives.push(Number(num));
+     // for last number
+     if (num) {
+        const lastNum = Number(num);
+        if (lastNum < 0) {
+            negatives.push(lastNum);
+        } else if (lastNum <= 1000) {
+            sum += lastNum;
+        }
     }
 
     // return if any one number is negative than return
@@ -53,7 +58,6 @@ function add(numbers) {
         return `negative numbers not allowed <${negatives.join(', ')}>`
     }
 
-    sum += Number(num)
     return sum
 }
 
