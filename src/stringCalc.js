@@ -4,6 +4,7 @@ function add(numbers) {
     if(numbers === '') {
         return 0;
     }
+
     // for one length string
     if(numbers.length == 1) {
         return Number(numbers) // type casting
@@ -30,8 +31,9 @@ function add(numbers) {
 
         numStartIndex = delimiterEndIndex + 1;
     }
-    console.log(delimiter)
+
     let found = false
+    
     //function to calculate sum
     for(let i = numStartIndex; i < n; i++) {
 
