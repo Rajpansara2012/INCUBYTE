@@ -22,5 +22,6 @@ describe('String Calculator', () => {
     });
     it('should not contain nagetive number in string', () => {
         expect(add('-1,2')).to.equal('negative numbers not allowed <-1>');
+        expect(add('-1,-2')).to.equal('negative numbers not allowed <-1, -2>');
     });
 });

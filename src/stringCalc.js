@@ -14,6 +14,7 @@ function add(numbers) {
     let sum = 0
     let n = numbers.length
     let numStartIndex = 0
+    let negatives = []
 
     // Check for custom delimiter
     if(numbers.startsWith('//')) {
@@ -25,13 +26,29 @@ function add(numbers) {
     //function to calculate sum
     for(let i = numStartIndex; i < n; i++) {
         if(numbers.slice(i, i + delimiter.length) === delimiter || numbers[i] == '\n') { // comparing delimiters
-            sum += Number(num)
+            let temp_num = Number(num)
+            if(temp_num < 0) {
+                negatives.push(temp_num)
+                num = ""
+                continue
+            }
+            sum += temp_num
             num = ""
             i += delimiter.length - 1; // skip delimiter
         }
         else {
             num += numbers[i]
         }
+    }
+
+    //if last number is negative
+    if(Number(num) < 0) {
+        negatives.push(Number(num));
+    }
+
+    // return if any one number is negative than return
+    if(negatives.length > 0) {
+        return `negative numbers not allowed <${negatives.join(', ')}>`
     }
 
     sum += Number(num)
