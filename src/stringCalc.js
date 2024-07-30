@@ -27,12 +27,14 @@ function add(numbers) {
     for(let i = numStartIndex; i < n; i++) {
         if(numbers.slice(i, i + delimiter.length) === delimiter || numbers[i] == '\n') { // comparing delimiters
             let temp_num = Number(num)
+
             if(temp_num < 0) {
                 negatives.push(temp_num)
-                num = ""
-                continue
             }
-            sum += temp_num
+            else if(temp_num <= 1000) {
+                sum += temp_num
+            }
+            
             num = ""
             i += delimiter.length - 1; // skip delimiter
         }
