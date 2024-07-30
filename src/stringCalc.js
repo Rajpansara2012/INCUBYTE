@@ -9,7 +9,7 @@ function add(numbers) {
         return Number(numbers) // type casting
     }
 
-    let delimiter = ','
+    let delimiter = [',']
     let num=""
     let sum = 0
     let n = numbers.length
@@ -19,13 +19,30 @@ function add(numbers) {
     // Check for custom delimiter
     if(numbers.startsWith('//')) {
         const delimiterEndIndex = numbers.indexOf('\n');
-        delimiter = numbers.substring(2, delimiterEndIndex);    
+        let delimiterPart = numbers.substring(2, delimiterEndIndex);    
+        
+        //handle multi delimiter
+        if(delimiterPart.startsWith('[') && delimiterPart.endsWith(']')) {
+            delimiter = delimiterPart.slice(1, -1).split('][');
+        } else {
+            delimiter = [delimiterPart];
+        }
+
         numStartIndex = delimiterEndIndex + 1;
     }
-
+    console.log(delimiter)
+    let found = false
     //function to calculate sum
     for(let i = numStartIndex; i < n; i++) {
-        if(numbers.slice(i, i + delimiter.length) === delimiter || numbers[i] == '\n') { // comparing delimiters
+
+        for(d of delimiter) {
+            if(numbers.slice(i, i + d.length) === d) {
+                i += d.length - 1; // skip delimiter
+                found = true
+            }
+        }
+
+        if(found || numbers[i] == '\n') { // comparing delimiters
             let temp_num = Number(num)
 
             if(temp_num < 0) {
@@ -36,7 +53,7 @@ function add(numbers) {
             }
             
             num = ""
-            i += delimiter.length - 1; // skip delimiter
+            found = false;
         }
         else {
             num += numbers[i]
