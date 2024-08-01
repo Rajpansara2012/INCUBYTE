@@ -1,22 +1,6 @@
-// funtion for string number addition
-function add(numbers) {
-    //for empty string
-    if(numbers === '') {
-        return 0;
-    }
-
-    // for one length string
-    if(numbers.length == 1) {
-        return Number(numbers) // type casting
-    }
-
+function custom_delimiter(numbers) {
     let delimiter = [',']
-    let num=""
-    let sum = 0
-    let n = numbers.length
     let numStartIndex = 0
-    let negatives = []
-
     // Check for custom delimiter
     if(numbers.startsWith('//')) {
         const delimiterEndIndex = numbers.indexOf('\n');
@@ -31,6 +15,28 @@ function add(numbers) {
 
         numStartIndex = delimiterEndIndex + 1;
     }
+    return {delimiter,numStartIndex};
+}
+
+// funtion for string number addition
+function add(numbers) {
+    //for empty string
+    if(numbers === '') {
+        return 0;
+    }
+    
+    // for one length string
+    if(numbers.length == 1) {
+        return Number(numbers) // type casting
+    }
+
+    let num=""
+    let sum = 0
+    let n = numbers.length
+    let negatives = []
+
+    let {delimiter, numStartIndex} = custom_delimiter(numbers)
+    
 
     let found = false
     
